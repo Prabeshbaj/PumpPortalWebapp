@@ -1,0 +1,278 @@
+:root {
+  --bg-primary: #0a0b0d;
+  --bg-secondary: #16171a;
+  --bg-card: #1e2024;
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;
+  --border-color: #2d2f34;
+  --buy-color: #22c55e;
+  --buy-color-hover: #16a34a;
+  --sell-color: #ef4444;
+  --sell-color-hover: #dc2626;
+  --input-bg: #2d2f34;
+  --success-bg: #064e3b;
+  --success-border: #065f46;
+  --success-text: #34d399;
+  --error-bg: #7f1d1d;
+  --error-border: #991b1b;
+  --error-text: #fca5a5;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.trading-sections {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.trading-section {
+  min-width: 0;
+}
+
+.card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  height: 100%;
+  border: 1px solid var(--border-color);
+}
+
+.card-header {
+  padding: 20px;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  border-radius: 12px 12px 0 0;
+}
+
+.card-header h2 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 24px;
+}
+
+.card-header p {
+  margin: 10px 0 0;
+  color: var(--text-secondary);
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.trade-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  margin: 0;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 16px;
+  background: var(--input-bg);
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--text-secondary);
+  box-shadow: 0 0 0 1px var(--text-secondary);
+}
+
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239ca3af'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 40px;
+}
+
+.preset-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.preset-button {
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex: 1;
+  min-width: 80px;
+  font-weight: 500;
+  border: 1px solid;
+}
+
+.preset-button.disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Buy section preset buttons */
+.trading-section:first-child .preset-button {
+  background: transparent;
+  border-color: var(--buy-color);
+  color: var(--buy-color);
+}
+
+.trading-section:first-child .preset-button:hover:not(.disabled) {
+  background: var(--buy-color);
+  color: var(--bg-primary);
+}
+
+.trading-section:first-child .preset-button.active {
+  background: var(--buy-color);
+  color: var(--bg-primary);
+}
+
+/* Sell section preset buttons */
+.trading-section:last-child .preset-button {
+  background: transparent;
+  border-color: var(--sell-color);
+  color: var(--sell-color);
+}
+
+.trading-section:last-child .preset-button:hover:not(.disabled) {
+  background: var(--sell-color);
+  color: var(--bg-primary);
+}
+
+.trading-section:last-child .preset-button.active {
+  background: var(--sell-color);
+  color: var(--bg-primary);
+}
+
+/* Submit buttons */
+.submit-button {
+  padding: 14px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.2s;
+}
+
+/* Buy section submit */
+.trading-section:first-child .submit-button {
+  background: var(--buy-color);
+  color: var(--bg-primary);
+}
+
+.trading-section:first-child .submit-button:hover:not(:disabled) {
+  background: var(--buy-color-hover);
+}
+
+/* Sell section submit */
+.trading-section:last-child .submit-button {
+  background: var(--sell-color);
+  color: var(--bg-primary);
+}
+
+.trading-section:last-child .submit-button:hover:not(:disabled) {
+  background: var(--sell-color-hover);
+}
+
+.submit-button:disabled {
+  background: var(--border-color) !important;
+  cursor: not-allowed;
+}
+
+.alert {
+  margin-top: 20px;
+  padding: 14px;
+  border-radius: 8px;
+}
+
+.error {
+  background: var(--error-bg);
+  color: var(--error-text);
+  border: 1px solid var(--error-border);
+}
+
+.success {
+  background: var(--success-bg);
+  color: var(--success-text);
+  border: 1px solid var(--success-border);
+}
+
+.signature-container {
+  margin-top: 8px;
+  word-break: break-all;
+}
+
+.signature-label {
+  font-weight: 500;
+}
+
+.signature-link {
+  color: var(--success-text);
+  text-decoration: none;
+  margin-left: 4px;
+}
+
+.signature-link:hover {
+  text-decoration: underline;
+  opacity: 0.9;
+}
+
+@media (max-width: 1024px) {
+  .trading-sections {
+    grid-template-columns: 1fr;
+  }
+
+  .container {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .preset-buttons {
+    flex-direction: column;
+  }
+
+  .preset-button {
+    width: 100%;
+  }
+}
